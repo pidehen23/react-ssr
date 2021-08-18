@@ -6,6 +6,13 @@ const Home = () => {
   return (
     <div>
       <div>This is home</div>
+      <button
+        onClick={() => {
+          alert("666");
+        }}
+      >
+        click
+      </button>
       <Page></Page>
     </div>
   );

@@ -6,6 +6,7 @@ const app = express();
 
 const Home = require("../src/component/Home.js");
 const content = renderToString(React.createElement(Home));
+app.use(express.static("dist"));
 
 app.use("/", function(req, res, next) {
   res.send(
@@ -17,6 +18,7 @@ app.use("/", function(req, res, next) {
        <body>
          <div id="root">${content}</div>
        </body>
+       <script src="/index.js"></script>
      </html>
     `
   );
