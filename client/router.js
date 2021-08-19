@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 
-import Home from "./src/component/Home";
-import Login from "./src/component/Login";
+import Home from "./component/Home";
+import Login from "./component/Login";
 
 export default (
   <div>
