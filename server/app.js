@@ -1,5 +1,4 @@
 const express = require("express");
-// require("node-jsx").install();
 const app = express();
 
 app.use(express.static("dist"));
@@ -14,7 +13,8 @@ app.get("/api/list", function(req, res, next) {
 });
 
 app.use("*", function(req, res, ctx) {
-  res.send(render(req));
+  if (req.baseUrl === "/favicon.ico") return res.end();
+  render(req, res);
 });
 
 app.listen(3001, () => {
