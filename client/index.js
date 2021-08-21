@@ -5,6 +5,12 @@ import { Provider } from "react-redux";
 
 import Router from "./router";
 import { getClientStore } from "./store";
+import StyleContext from "isomorphic-style-loader/StyleContext";
+
+const insertCss = (...styles) => {
+  const removeCss = styles.map(style => style._insertCss && style._insertCss());
+  return () => removeCss.forEach(dispose => dispose && dispose());
+};
 
 const App = () => {
   return (
@@ -14,4 +20,9 @@ const App = () => {
   );
 };
 
-ReactDom.hydrate(<App />, document.getElementById("root"));
+ReactDom.hydrate(
+  <StyleContext.Provider value={{ insertCss }}>
+    <App />
+  </StyleContext.Provider>,
+  document.getElementById("root")
+);

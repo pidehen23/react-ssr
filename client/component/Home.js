@@ -1,10 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { compose } from "redux";
 
-// import styles from "./Home.css";
 import Page from "./Page";
-// import withStyle from "../hoc/withStyle";
 import { getHomeList } from "../store/home/action";
 
 class Home extends React.Component {
@@ -25,16 +22,14 @@ class Home extends React.Component {
     const props = this.props;
     return (
       <div>
-        <div className={"title"}>This is home</div>
+        <div>This is home</div>
         <div>
           {!!props.home.list.length &&
             props.home.list.map(item => <div key={item.name}>{item.name}</div>)}
         </div>
         <button onClick={props.getHomeList1}>click me</button>
         <div>
-          <button className={"alertMe"} onClick={() => alert("hhhhhh")}>
-            alert
-          </button>
+          <button onClick={() => alert("hhhhhh")}>alert</button>
         </div>
         <Page></Page>
       </div>
@@ -54,4 +49,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default compose(connect(mapStateToProps, mapDispatchToProps))(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

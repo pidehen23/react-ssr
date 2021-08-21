@@ -13,7 +13,7 @@ app.get("/api/list", function(req, res, next) {
 });
 
 app.use("*", function(req, res, ctx) {
-  if (req.baseUrl === "/favicon.ico") return res.end();
+  // if (req.baseUrl === "/favicon.ico") return res.end();
   render(req, res);
 });
 

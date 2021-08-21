@@ -1,7 +1,4 @@
-import axios from "axios";
 import { CHANGE_LIST } from "./actionTypes";
-
-axios.defaults.baseURL = "http://localhost:3001";
 
 //普通action
 export const changeList = list => ({
@@ -11,11 +8,11 @@ export const changeList = list => ({
 
 //异步操作的action(采用thunk中间件)
 export const getHomeList = () => (dispatch, getState, axiosInstance) => {
-  return axios
+  return axiosInstance
     .get("/api/list")
     .then(res => {
       const list = res.data;
-      console.log("===== axios-data", list.data);
+      // console.log("===== axios-data", list.data);
       return dispatch(changeList(Array.isArray(list.data) ? list.data : []));
     })
     .catch(error => {
